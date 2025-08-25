@@ -1,0 +1,331 @@
+1. OOPS :
+Ques 1.Pet Adoption App
+  Design classes for Pet, Dog, Cat, and Bird. Use     inheritance and constructors
+to initialize them.
+
+
+CLASS Pet
+    ATTRIBUTES:
+        name
+        age
+    
+    CONSTRUCTOR(name, age)
+        SET this.name = name
+        SET this.age = age
+    
+    METHOD displayInfo()
+        PRINT "Name: ", name, " Age: ", age
+END CLASS
+
+
+CLASS Dog EXTENDS Pet
+    ATTRIBUTE: breed
+    
+    CONSTRUCTOR(name, age, breed)
+        CALL super(name, age)
+        SET this.breed = breed
+    
+    METHOD displayInfo()
+        CALL super.displayInfo()
+        PRINT "Breed: ", breed
+END CLASS
+
+
+CLASS Cat EXTENDS Pet
+    ATTRIBUTE: color
+    
+    CONSTRUCTOR(name, age, color)
+        CALL super(name, age)
+        SET this.color = color
+    
+    METHOD displayInfo()
+        CALL super.displayInfo()
+        PRINT "Color: ", color
+END CLASS
+
+
+CLASS Bird EXTENDS Pet
+    ATTRIBUTE: species
+    
+    CONSTRUCTOR(name, age, species)
+        CALL super(name, age)
+        SET this.species = species
+    
+    METHOD displayInfo()
+        CALL super.displayInfo()
+        PRINT "Species: ", species
+END CLASS
+
+
+// MAIN
+CREATE dog1 = Dog("Tommy", 3, "Labrador")
+CALL dog1.displayInfo()
+
+CREATE cat1 = Cat("Kitty", 2, "White")
+CALL cat1.displayInfo()
+
+CREATE bird1 = Bird("Mithu", 1, "Parrot")
+CALL bird1.displayInfo()
+CLASS Pet
+    ATTRIBUTES:
+        name
+        age
+    
+    CONSTRUCTOR(name, age)
+        SET this.name = name
+        SET this.age = age
+    
+    METHOD displayInfo()
+        PRINT "Name: ", name, " Age: ", age
+END CLASS
+
+
+CLASS Dog EXTENDS Pet
+    ATTRIBUTE: breed
+    
+    CONSTRUCTOR(name, age, breed)
+        CALL super(name, age)
+        SET this.breed = breed
+    
+    METHOD displayInfo()
+        CALL super.displayInfo()
+        PRINT "Breed: ", breed
+END CLASS
+
+
+CLASS Cat EXTENDS Pet
+    ATTRIBUTE: color
+    
+    CONSTRUCTOR(name, age, color)
+        CALL super(name, age)
+        SET this.color = color
+    
+    METHOD displayInfo()
+        CALL super.displayInfo()
+        PRINT "Color: ", color
+END CLASS
+
+
+CLASS Bird EXTENDS Pet
+    ATTRIBUTE: species
+    
+    CONSTRUCTOR(name, age, species)
+        CALL super(name, age)
+        SET this.species = species
+    
+    METHOD displayInfo()
+        CALL super.displayInfo()
+        PRINT "Species: ", species
+END CLASS
+
+
+
+CREATE dog1 = Dog("Tommy", 3, "Labrador")
+CALL dog1.displayInfo()
+
+CREATE cat1 = Cat("Kitty", 2, "White")
+CALL cat1.displayInfo()
+
+CREATE bird1 = Bird("Mithu", 1, "Parrot")
+CALL bird1.displayInfo()
+
+
+
+Ques 2. Library Membership Tracker
+ Create a class Member with attributes like name, ID, membership date. Add
+methods to check membership validity.
+
+
+CLASS Member
+    ATTRIBUTES:
+        name
+        ID
+        membershipType
+    
+    CONSTRUCTOR(name, ID, membershipType)
+        SET this.name = name
+        SET this.ID = ID
+        SET this.membershipType = membershipType
+    
+    METHOD displayMemberInfo()
+        PRINT "Name: ", name
+        PRINT "ID: ", ID
+        PRINT "Membership Type: ", membershipType
+END CLASS
+
+CREATE member1 = Member("Sourav", 101, "Premium")
+CALL member1.displayMemberInfo()
+
+CREATE member2 = Member("Riya", 102, "Regular")
+CALL member2.displayMemberInfo()
+
+
+
+2. Data Structures & Algorithms
+
+Ques 1.Undo Feature in Text Editor
+○ Use a Stack to store undo operations and implement revert functionality.
+
+class UndoTextEditor {
+    main() {
+        create empty Stack undoStack
+        text = ""
+
+        while (true) {
+            print current text
+            print menu (1. Type, 2. Undo, 3. Exit)
+            choice = read input
+
+            if (choice == 1) {
+                newText = read input
+                undoStack.push(text)
+                text = text + newText
+            }
+            else if (choice == 2) {
+                if (undoStack not empty) {
+                    text = undoStack.pop()
+                } else {
+                    print "Nothing to undo"
+                }
+            }
+            else if (choice == 3) {
+                break
+            }
+        }
+    }
+}
+
+
+Ques2. Call Center Queue Management
+○ Simulate Queue of customers waiting, and dequeue them based on priority
+(normal/emergency).
+
+
+class Customer {
+    String name
+    String type   
+}
+
+class CallCenter {
+    main() {
+        create Queue normalQueue
+        create Queue emergencyQueue
+
+        while (true) {
+            print menu (1. Add Customer, 2. Serve, 3. Exit)
+            choice = read input
+
+            if (choice == 1) {
+                name = read input
+                type = read input
+
+                if (type == "emergency") {
+                    emergencyQueue.enqueue(new Customer(name, type))
+                } else {
+                    normalQueue.enqueue(new Customer(name, type))
+                }
+            }
+            else if (choice == 2) {
+                if (emergencyQueue not empty) {
+                    customer = emergencyQueue.dequeue()
+                    print "Serving emergency customer: " + customer.name
+                }
+                else if (normalQueue not empty) {
+                    customer = normalQueue.dequeue()
+                    print "Serving normal customer: " + customer.name
+                }
+                else {
+                    print "No customers waiting"
+                }
+            }
+            else if (choice == 3) {
+                break
+            }
+        }
+    }
+}
+
+3. Collections, Generics, Streams
+
+Ques1. Student Score Storage
+○ Store marks in HashMap<String, Integer>, and display the highest scorer
+using streams.
+
+CLASS StudentScores
+    ATTRIBUTE:
+        scores (HashMap<String, Integer>)
+
+    CONSTRUCTOR()
+        INITIALIZE scores as empty HashMap
+
+    METHOD addScore(name, marks)
+        PUT (name, marks) INTO scores
+
+    METHOD displayHighestScorer()
+        highest = scores.entrySet().stream()
+                         .max(by value)
+                         .get()
+        PRINT "Highest Scorer: " + highest.key + " with " + highest.value
+END CLASS
+
+
+CREATE obj = StudentScores()
+
+CALL obj.addScore("Sourav", 85)
+CALL obj.addScore("Riya", 92)
+CALL obj.addScore("Amit", 78)
+
+CALL obj.displayHighestScorer()
+
+
+Ques2. Employee Record Keeper
+○ Use ArrayList<Employee> and filter employees by department using
+streams.
+
+
+CLASS Employee
+    ATTRIBUTES:
+        name
+        department
+    
+    CONSTRUCTOR(name, department)
+        SET this.name = name
+        SET this.department = department
+
+    METHOD displayEmployee()
+        PRINT "Name: ", name, " Department: ", department
+END CLASS
+
+
+CLASS EmployeeRecord
+    ATTRIBUTE:
+        employees (ArrayList<Employee>)
+    
+    CONSTRUCTOR()
+        INITIALIZE employees as empty ArrayList
+    
+    METHOD addEmployee(emp)
+        ADD emp TO employees
+    
+    METHOD filterByDepartment(dept)
+        filteredList = employees.stream()
+                                 .filter(e -> e.department == dept)
+                                 .toList()
+        
+        FOR EACH emp IN filteredList
+            CALL emp.displayEmployee()
+END CLASS
+
+
+CREATE record = EmployeeRecord()
+
+CREATE e1 = Employee("Sourav", "IT")
+CREATE e2 = Employee("Riya", "HR")
+CREATE e3 = Employee("Amit", "IT")
+
+CALL record.addEmployee(e1)
+CALL record.addEmployee(e2)
+CALL record.addEmployee(e3)
+
+CALL record.filterByDepartment("IT")
+
