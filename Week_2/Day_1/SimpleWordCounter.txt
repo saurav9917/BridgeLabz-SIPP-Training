@@ -1,0 +1,15 @@
+Start
+FUNCTION wordCounter(paragraph)
+    CLEAN text: lowercase, remove punctuation
+    SPLIT words by space
+    CREATE map<word, count>
+    FOR each word in words
+        IF word in map THEN map[word]++
+        ELSE map[word] = 1
+    SORT map by frequency (descending)
+    PRINT word -> count
+
+MAIN
+    paragraph = "The news today is about the rise in technology trends."
+    CALL wordCounter(paragraph)
+End
