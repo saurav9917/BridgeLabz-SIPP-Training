@@ -1,0 +1,41 @@
+class Vehicle {
+    String vehicleNumber;
+    double entryTime;
+
+    double calculateFee(double exitTime) {
+        return 0; 
+    }
+}
+
+class Car extends Vehicle {
+    @Override
+    double calculateFee(double exitTime) {
+        double hours = exitTime - entryTime;
+        return 50 + Math.ceil(hours - 1) * 30;
+    }
+}
+
+class Bike extends Vehicle {
+    @Override
+    double calculateFee(double exitTime) {
+        double hours = exitTime - entryTime;
+        return 20 + Math.ceil(hours - 1) * 10;
+    }
+}
+
+class Truck extends Vehicle {
+    @Override
+    double calculateFee(double exitTime) {
+        double hours = exitTime - entryTime;
+        return 100 + Math.ceil(hours - 1) * 50;
+    }
+}
+
+main() {
+    Vehicle v1 = new Car();
+    v1.vehicleNumber = "KA05AB1234";
+    v1.entryTime = 10.00;
+
+    double fee = v1.calculateFee(13.30); 
+    print(fee);
+}

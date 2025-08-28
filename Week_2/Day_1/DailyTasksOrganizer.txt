@@ -1,0 +1,21 @@
+Start
+CLASS TaskManager
+    ATTRIBUTES: tasks (LinkedHashMap<Integer, String>)
+    counter = 1
+    METHOD addTask(description)
+        tasks[counter] = description
+        counter++
+    METHOD removeTask(id)
+        DELETE tasks[id]
+    METHOD viewTasks()
+        FOR each entry in tasks
+            PRINT id + " -> " + description
+
+MAIN
+    CREATE TaskManager tm
+    tm.addTask("Check emails")
+    tm.addTask("Prepare sales report")
+    tm.addTask("Call client")
+    tm.removeTask(2)
+    tm.viewTasks()
+End

@@ -1,0 +1,35 @@
+class Node {
+    String stopName;
+    Node next;
+}
+
+class BusRoute {
+    Node head;
+
+    void insertStop(String stopName, int position) {
+
+    }
+
+    void removeStop(String stopName) {
+    }
+
+    boolean searchStop(String stopName) {
+    }
+
+    void displayRoute() {
+    }
+}
+
+main() {
+    BusRoute route = new BusRoute();
+    route.insertStop("Depot", 0);
+    route.insertStop("Main Street", 1);
+    route.insertStop("City Mall", 2);
+    route.insertStop("Hospital", 3);
+    route.insertStop("Airport", 4);
+
+    route.insertStop("University", 3);
+    route.removeStop("Hospital");
+
+    route.searchStop("Airport"); // true
+}

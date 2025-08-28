@@ -1,0 +1,23 @@
+class SurveyResponse {
+    String restaurantName;
+    int rating;
+}
+
+main() {
+    List<SurveyResponse> responses = Arrays.asList(
+        new SurveyResponse("PizzaHut", 4),
+        new SurveyResponse("PizzaHut", 5),
+        new SurveyResponse("KFC", 3),
+        new SurveyResponse("KFC", 4),
+        new SurveyResponse("Subway", 5),
+        new SurveyResponse("Subway", 4),
+        new SurveyResponse("Subway", 5)
+    );
+
+    Map<String, Double> avgRatings =
+        responses.stream()
+        .collect(groupingBy(r -> r.restaurantName,
+                            averagingInt(r -> r.rating)));
+
+    avgRatings.forEach((name, avg) -> print(name + " → " + avg));
+}

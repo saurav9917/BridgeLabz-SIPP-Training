@@ -1,0 +1,45 @@
+class User {
+    String username;
+    String password;
+
+    boolean login() {
+        return true/false;
+    }
+}
+
+class Student extends User {
+    boolean enrolled;
+
+    @Override
+    boolean login() {
+        if (super.login() && enrolled == true) {
+            return true;
+        }
+        return false;
+    }
+}
+
+class Admin extends User {
+    boolean hasAdminPrivileges;
+
+    @Override
+    boolean login() {
+        if (super.login() && hasAdminPrivileges == true) {
+
+            return true;
+        }
+        return false;
+    }
+}
+
+main() {
+    User u1 = new Student();
+    u1.username = "john123";
+    u1.password = "pass123";
+    u1.login();
+
+    User u2 = new Admin();
+    u2.username = "admin01";
+    u2.password = "adminPass";
+    u2.login();
+}

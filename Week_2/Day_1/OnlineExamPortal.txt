@@ -1,0 +1,29 @@
+Start
+CLASS User
+    ATTRIBUTES: username, password
+    METHOD login()
+        PRINT "Generic login - to be overridden"
+
+CLASS Student EXTENDS User
+    ATTRIBUTES: isRegistered, isEnrolled
+    METHOD login()
+        IF isRegistered AND isEnrolled THEN
+            PRINT "Student login successful - show exams"
+        ELSE
+            PRINT "Access denied - student not enrolled"
+
+CLASS Admin EXTENDS User
+    ATTRIBUTES: hasAdminPrivileges
+    METHOD login()
+        IF hasAdminPrivileges THEN
+            PRINT "Admin login successful - show management tools"
+        ELSE
+            PRINT "Access denied - not an admin"
+
+MAIN
+    CREATE Student s("john123", "pass", true, true)
+    CALL s.login()
+
+    CREATE Admin a("admin01", "adminpass", true)
+    CALL a.login()
+End

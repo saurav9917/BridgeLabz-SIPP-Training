@@ -1,0 +1,30 @@
+int[][] attendance = new int[30][30];
+
+void markAttendance(int student, int day, int status) {
+    attendance[student][day] = status;
+}
+
+int countPresentOnDay(int day) {
+    int count = 0;
+    for (int i=0; i<30; i++) {
+        if (attendance[i][day] == 1) count++;
+    }
+    return count;
+}
+
+int totalAttendanceOfStudent(int student) {
+    int total = 0;
+    for (int d=0; d<30; d++) {
+        total += attendance[student][d];
+    }
+    return total;
+}
+
+
+void printDefaulters() {
+    for (int i=0; i<30; i++) {
+        if (totalAttendanceOfStudent(i) < 22) {
+            print("Student " + (i+1) + " is defaulter");
+        }
+    }
+}
